@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Views Statements</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>chanime.org</h1>
+    </div>
+    
+    <div class="link">
+        <a href="../index.html">Home</a>
+        <a href="views.html">Views</a>
+        <a href="triggers.html">Triggers</a>
+        <a href="create.html">Create</a>
+        <a href="alter.html">Alter</a>
+        <a href="update.html">Update</a>
+        <a href="insert.html">Insert Into</a>
+    </div>
+
+    <h2>Anime Ansicht</h2>
+    <pre>
+CREATE VIEW animeAnsicht AS
+    SELECT anime.titel AS "Anime",
+           anime.erschjahr AS "Erscheinungsjahr",
+           anime.manga AS "manga?",
+           status.typ AS "Produktionsstatus",
+           produktionsfirma.name AS "Produktionsstudio",
+           autor.name AS "Autor"
+    FROM anime
+    JOIN status ON status.SID = anime.SID
+    JOIN produktionsfirma ON produktionsfirma.PID = anime.PID
+    JOIN autor ON autor.AUTOR_ID = anime.AUTOR_ID;
+    </pre>
+    <h2>Charakter Ansicht</h2>
+    <pre>
+CREATE VIEW charakterAnsicht AS
+    SELECT 
+        anime.titel AS "Anime", 
+        charaktere.name AS "Charaktername", 
+        charaktere.voice_actor AS "Voiced by", 
+        charaktere.signatur AS "Signaturfähigkeit", 
+        rolle.typ AS "Rolle im Anime"
+    FROM charaktere
+    JOIN anime ON anime.AID = charaktere.AID
+    JOIN rolle ON charaktere.RID = rolle.RID
+    WHERE anime = "One Piece" OR anime = "Naruto"
+    ORDER BY anime.titel, charaktere.name
+    </pre>
+    <h2>Beziehungen Ansicht</h2>
+    <pre>
+CREATE VIEW charakterBeziehungen AS 
+    SELECT  
+        (SELECT name FROM charaktere WHERE CID = cb.CID1) AS name1, 
+        (SELECT name FROM charaktere WHERE CID = cb.CID2) AS name2,
+        (SELECT typ FROM beziehungen WHERE BID = cb.BID) AS Beziehungstyp
+    FROM char_bez AS cb
+    Order By name1
+    </pre>
+    <h2>Views</h2>
+    <div class="buttons">
+        <button onclick="loadData('view1')">Animes</button>
+        <button onclick="loadData('view2')">Charaktere</button>
+        <button onclick="loadData('view3')">Beziehungen</button>
+    </div>
+
+    <table id="data-table">
+        <thead id="table-header"></thead>
+        <tbody id="table-body"></tbody>
+    </table>
+    
+    <script>
+        // Funktion zum Laden der Daten für eine View
+        function loadData(view) {
+            console.log(`Lade Daten für: ${view}`);
+
+            // Daten von der API abrufen
+            fetch(`http://localhost:3000/api/data?view=${view}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Empfangene Daten:", data);
+                    const tableHeader = document.getElementById("table-header");
+                    const tableBody = document.getElementById("table-body");
+
+                    tableHeader.innerHTML = "";
+                    tableBody.innerHTML = "";
+
+                    if (data.length > 0) {
+                        const headers = Object.keys(data[0]);
+                        const headerRow = document.createElement("tr");
+
+                        headers.forEach(header => {
+                            const th = document.createElement("th");
+                            th.textContent = header;
+                            headerRow.appendChild(th);
+                        });
+
+                        tableHeader.appendChild(headerRow);
+
+                        data.forEach(row => {
+                            const tr = document.createElement("tr");
+
+                            headers.forEach(header => {
+                                const td = document.createElement("td");
+                                td.textContent = row[header];
+                                tr.appendChild(td);
+                            });
+
+                            tableBody.appendChild(tr);
+                        });
+                    } else {
+                        console.log("Keine Daten vorhanden.");
+                    }
+                })
+                .catch(error => console.error("Fehler beim Laden der Daten:", error));
+        }
+
+        // Wenn die Seite geladen wird, Standardmäßig View 1 laden
+        document.addEventListener("DOMContentLoaded", () => {
+            loadData("view1"); // Standardmäßig View 1 laden
+        });
+    </script>
+</body>
+</html>

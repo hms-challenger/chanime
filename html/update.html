@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Statements</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>chanime.org</h1>
+    </div>
+    
+    <div class="link">
+        <a href="../index.html">Home</a>
+        <a href="views.html">Views</a>
+        <a href="triggers.html">Triggers</a>
+        <a href="create.html">Create</a>
+        <a href="alter.html">Alter</a>
+        <a href="update.html">Update</a>
+        <a href="insert.html">Insert Into</a>
+    </div>
+
+    <h2>diverse Update Statements</h2>
+    
+    <pre>
+Update charaktere
+set AID = 5
+where CID between 1 and 25;
+    </pre>
+    <pre>
+update charaktere
+set AID = 4
+where CID between 26 and 46;
+    </pre>
+    <pre>
+update charaktere
+set AID = 3
+where CID between 47 and 56;
+    </pre>
+    <pre>
+update charaktere
+set AID =2 
+where CID between 57 and 90;
+    </pre>
+    <pre>
+update charaktere 
+set AID = 1
+where CID between 91 and 100;
+    </pre>
+    <pre>
+UPDATE char_bez
+SET BID = 3,
+    last_edited = CURRENT_TIMESTAMP
+WHERE CID1 = 26 AND CID2 = 28 AND BID = 1;
+    </pre>
+</body>
+</html>

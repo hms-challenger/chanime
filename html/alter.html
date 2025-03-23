@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alter Statements</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>chanime.org</h1>
+    </div>
+    
+    <div class="link">
+        <a href="../index.html">Home</a>
+        <a href="views.html">Views</a>
+        <a href="triggers.html">Triggers</a>
+        <a href="create.html">Create</a>
+        <a href="alter.html">Alter</a>
+        <a href="update.html">Update</a>
+        <a href="insert.html">Insert Into</a>
+    </div>
+
+    <h2>diverse Alter Statements</h2>
+    
+    <pre>
+ALTER TABLE charaktere
+ADD COLUMN AID INT,
+ADD CONSTRAINT fk_anime
+FOREIGN KEY (AID) REFERENCES anime(AID);
+    </pre>
+    <pre>
+ALTER TABLE anime ADD COLUMN last_edited DATETIME DEFAULT '2025-03-07 14:25:36';
+ALTER TABLE charaktere ADD COLUMN last_edited DATETIME DEFAULT '2025-03-07 14:25:36';
+ALTER TABLE char_bez ADD COLUMN last_edited DATETIME DEFAULT '2025-03-07 14:25:36';
+ALTER TABLE anime_genre ADD COLUMN last_edited DATETIME DEFAULT '2025-03-07 14:25:36';
+ALTER TABLE autor ADD COLUMN last_edited DATETIME DEFAULT '2025-03-07 14:25:36';
+ALTER TABLE beziehungen ADD COLUMN last_edited DATETIME DEFAULT '2025-03-07 14:25:36';
+ALTER TABLE genre ADD COLUMN last_edited DATETIME DEFAULT '2025-03-07 14:25:36';
+ALTER TABLE produktionsfirma ADD COLUMN last_edited DATETIME DEFAULT '2025-03-07 14:25:36';
+ALTER TABLE rolle ADD COLUMN last_edited DATETIME DEFAULT '2025-03-07 14:25:36';
+ALTER TABLE status ADD COLUMN last_edited DATETIME DEFAULT '2025-03-07 14:25:36';
+    </pre>
+</body>
+</html>

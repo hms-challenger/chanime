@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Statements</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>chanime.org</h1>
+    </div>
+    
+    <div class="link">
+        <a href="../index.html">Home</a>
+        <a href="views.html">Views</a>
+        <a href="triggers.html">Triggers</a>
+        <a href="create.html">Create</a>
+        <a href="alter.html">Alter</a>
+        <a href="update.html">Update</a>
+        <a href="insert.html">Insert Into</a>
+    </div>
+
+    <h2>diverse Create Statements</h2>
+    <pre>
+CREATE TABLE anime (
+    AID INT PRIMARY KEY,
+    titel TEXT,
+    erschjahr TEXT,
+    manga BOOLEAN, 
+    SID INT,
+    PID INT,
+    AUTOR_ID INT,
+    FOREIGN KEY (SID) REFERENCES status(SID),
+    FOREIGN KEY (PID) REFERENCES produktionsfirma(PID),
+    FOREIGN KEY (AUTOR_ID) REFERENCES autor(AUTOR_ID)
+);</pre>
+    <pre>
+CREATE TABLE anime_genre (
+    AID INT,
+    GID INT,
+    PRIMARY KEY (AID, GID),
+    FOREIGN KEY (AID) REFERENCES anime(AID),
+    FOREIGN KEY (GID) REFERENCES genre(GID)
+);</pre>
+    <pre>
+CREATE TABLE autor (
+    AUTOR_ID INT PRIMARY KEY,
+    name text,
+    geb date,
+    tod date
+);
+    </pre>
+    <pre>
+CREATE TABLE beziehungen (
+    BID int PRIMARY key,
+    typ text
+);
+    </pre>
+    <pre>
+CREATE TABLE char_bez (
+    CID1 INT,
+    CID2 INT,
+    BID INT,
+    PRIMARY KEY (CID1, CID2, BID),
+    FOREIGN KEY (CID1) REFERENCES charaktere(CID),
+    FOREIGN KEY (CID2) REFERENCES charaktere(CID),
+    FOREIGN KEY (BID) REFERENCES beziehungen(BID)
+);
+    </pre>
+    <pre>
+CREATE TABLE charaktere (
+    CID INT PRIMARY KEY,
+    name text,
+    voice_actor text,
+    signatur text,
+    RID int, GID INT, 
+    FOREIGN key (RID) REFERENCES rolle(RID)
+);
+    </pre>
+    <pre>
+CREATE TABLE genre (
+    GID INT PRIMARY KEY,
+    name text,
+    beschreibung text
+);
+    </pre>
+    <pre>
+CREATE TABLE gruppe (
+    GID int PRIMARY KEY,
+    name text,
+    leader text
+);
+    </pre>
+    <pre>
+CREATE TABLE produktionsfirma (
+    PID INT PRIMARY KEY,
+    name text,
+    gruendungsjahr text,
+    jahresumsatz int
+);
+    </pre>
+    <pre>
+CREATE TABLE rolle (
+    RID INT PRIMARY KEY,
+    typ text
+);
+    </pre>
+    <pre>
+CREATE TABLE status (
+    SID INT PRIMARY KEY,
+    typ text
+);
+    </pre>
+    
+</body>
+</html>

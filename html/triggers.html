@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trigger Statement</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>chanime.org</h1>
+    </div>
+    
+    <div class="link">
+        <a href="../index.html">Home</a>
+        <a href="views.html">Views</a>
+        <a href="triggers.html">Triggers</a>
+        <a href="create.html">Create</a>
+        <a href="alter.html">Alter</a>
+        <a href="update.html">Update</a>
+        <a href="insert.html">Insert Into</a>
+    </div>
+    <h2>Beispiel-Trigger auf Tabelle Charaktere</h2>
+    <pre>
+CREATE TABLE charaktere (
+    CID INT PRIMARY KEY,
+    name text,
+    voice_actor text,
+    signatur text,
+    RID int, GID INT, 
+    FOREIGN key (RID) REFERENCES rolle(RID)
+);
+    </pre>
+
+    <div class="buttons">
+        <button>Charaktere</button> <!-- Button bleibt, aber ist nicht notwendig -->
+    </div>
+    
+    <table id="data-table">
+        <thead id="table-header"></thead>
+        <tbody id="table-body"></tbody>
+    </table>
+    
+    <script>
+        // Funktion zum Laden der Daten für eine View
+        function loadData(view) {
+            console.log(`Lade Daten für: ${view}`);
+    
+            fetch(`http://localhost:3000/api/data?view=${view}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP-Fehler! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Empfangene Daten:", data);
+                    const tableHeader = document.getElementById("table-header");
+                    const tableBody = document.getElementById("table-body");
+    
+                    // Tabelle leeren
+                    tableHeader.innerHTML = "";
+                    tableBody.innerHTML = "";
+    
+                    if (data.length > 0) {
+                        // Spaltenüberschriften aus JSON-Schlüsseln erstellen
+                        const headers = Object.keys(data[0]);
+                        const headerRow = document.createElement("tr");
+    
+                        headers.forEach(header => {
+                            const th = document.createElement("th");
+                            th.textContent = header;
+                            headerRow.appendChild(th);
+                        });
+    
+                        tableHeader.appendChild(headerRow);
+    
+                        // Daten in Tabelle einfügen
+                        data.forEach(row => {
+                            const tr = document.createElement("tr");
+    
+                            headers.forEach(header => {
+                                const td = document.createElement("td");
+                                td.textContent = row[header];
+                                tr.appendChild(td);
+                            });
+    
+                            tableBody.appendChild(tr);
+                        });
+                    } else {
+                        // Falls keine Daten vorhanden sind
+                        const noDataRow = document.createElement("tr");
+                        const noDataCell = document.createElement("td");
+                        noDataCell.setAttribute("colspan", "100%");
+                        noDataCell.textContent = "Keine Daten vorhanden.";
+                        noDataRow.appendChild(noDataCell);
+                        tableBody.appendChild(noDataRow);
+                    }
+                })
+                .catch(error => console.error("Fehler beim Laden der Daten:", error));
+        }
+    
+        // Wenn die Seite geladen wird, direkt "view4" laden
+        document.addEventListener("DOMContentLoaded", () => {
+            loadData("view4"); // Charaktere-View direkt laden
+        });
+    </script>
+    
+</body>
+</html>

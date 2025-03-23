@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="content">
+    <div class="header">
+        <h1>chanime.org</h1>
+    </div>
+    
+    <div class="link">
+        <a href="../index.html">Home</a>
+        <a href="html/views.html">Views</a>
+        <a href="html/triggers.html">Triggers</a>
+        <a href="html/create.html">Create</a>
+        <a href="html/alter.html">Alter</a>
+        <a href="html/update.html">Update</a>
+        <a href="html/insert.html">Insert Into</a>
+    </div>
+    <br>
+    <div>
+        <div>
+            <a href="#" class="toggle-link" onclick="toggleArticle1(event)">
+                <strong>Zielgruppe</strong></a>
+            <div id="artikel1" class="artikel-versteckt">
+                Die Datenbank richtet sich an Fans von Animes und Mangas, die Informationen zu ihren Lieblingsserien, Charakteren und deren Eigenschaften einfach abrufen und für Wikis oder private Zwecke nutzen möchten.
+                Zweck der Datenbank:
+                Die Datenbank soll es ermöglichen, relevante Daten übersichtlich und strukturiert bereitzustellen, um ein besseres Verständnis von Anime-Welten zu ermöglichen. Fans sollen mühelos auf wichtige Informationen zugreifen und diese weiterverwenden können.
+            </div>
+        </div>
+        
+        <div>
+            <a href="#" class="toggle-link" onclick="toggleArticle2(event)">
+                <strong>Inhalt</strong></a>
+            <div id="artikel2" class="artikel-versteckt">
+                Es handelt sich um eine Fandatenbank für Animes.
+                Jeder Anime besitzt einen Titel, ein Ersterscheinungsjahr, einen Autor, einen Vollständigkeitsstatus, ein Genre eine Produktionsfirma und evtl existiert ein assoziierter Manga.
+                Es gibt auch Charaktere, diese haben einen Namen, einen Anime zu dem sie gehören, eine primäre Gruppenzugehörigkeit, eine Rolle im Anime (Protag, Antag, Sidecharacter), einen Voiceactor in der OV und  evtl einen Signaturgegenstand oder Fähigkeit.
+                Eine Produktionsfirma des Animes hat einen Jahresumsatz des letzten(2022) Jahres, ein Gründungsjahr und einen Namen.
+                Ein Autor hat einen Namen, ein Geburtsdatum und evtl ein Todesdatum.
+                Ein Genre hat einen Namen und eine Beschreibung.
+                Der Status eines Animes kann vollständig, unvollendet oder laufend sein.
+                Eine Gruppe  an Charakteren hat einen Namen und einen Leiter/Anführer.
+                Charakter können Beziehungen der fünf Typen Liebesbeziehung, Rivalität, Freundschaft, Feindschaft und kompliziert zu anderen Charakteren haben.
+                Mehrere Animes können die gleichen Genres haben, und ein Anime kann mehrere Genre haben.
+            </div>
+        </div>
+        
+        <div>
+            <a href="#" class="toggle-link" onclick="toggleArticle3(event)">
+                <strong>Was soll die Datenbank enthalten?</strong></a>
+                <div id="artikel3" class="artikel-versteckt">
+                    <h3>1. Anime</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Titel</th>
+                                    <th>Erscheinungsjahr</th>
+                                    <th>Autor</th>
+                                    <th>Status</th>
+                                    <th>Manga</th>
+                                    <th>Genre</th>
+                                    <th>Produktionsfirma</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    <h3>2. Charaktere</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Gruppe</th>
+                                    <th>Rolle</th>
+                                    <th>Voiceactor</th>
+                                    <th>Signatur_Gegenstände / Signatur_Fähigkeit</th>
+                                    <th>Anime</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    <h3>3. Status</h3>
+                        <table id="status-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Typ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Hier wird der Inhalt durch JavaScript dynamisch eingefügt -->
+                            </tbody>
+                        </table>
+                    <h3>4. Beziehungen</h3>
+                        <table id="beziehungen-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Typ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Hier wird der Inhalt durch JavaScript dynamisch eingefügt -->
+                            </tbody>
+                        </table>
+                    <h3>5. Beziehungstabelle (Charakter)</h3>
+                        <table id="beziehungstabelle">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Charakter</th>
+                                    <th>TypID</th>
+                                    <th>Charakter</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Hier wird der Inhalt durch JavaScript dynamisch eingefügt -->
+                            </tbody>
+                        </table>
+                    <h3>6. Autoren</h3>
+                        <table id="autoren">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Geburtsdatum</th>
+                                    <th>Todesdatum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Hier wird der Inhalt durch JavaScript dynamisch eingefügt -->
+                            </tbody>
+                        </table>
+                    <h3>7. Produktionsfirmen</h3>
+                        <table id="produktionsfirmen">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Gründungsjahr</th>
+                                    <th>Produktionen</th>
+                                    <th>Jahresumsatz</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Hier wird der Inhalt durch JavaScript dynamisch eingefügt -->
+                            </tbody>
+                        </table>
+                    <h3>8. Gruppen</h3>
+                        <table id="gruppen">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Beziehung zu MC</th>
+                                    <th>Leiter/Anführer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Hier wird der Inhalt durch JavaScript dynamisch eingefügt -->
+                            </tbody>
+                        </table>
+                    <h3>9. Genre</h3>
+                        <table id="genre">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Beschreibung</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Hier wird der Inhalt durch JavaScript dynamisch eingefügt -->
+                            </tbody>
+                        </table>
+                    <h3>10. Rolle</h3>
+                        <table id="rollen">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Typ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Hier wird der Inhalt durch JavaScript dynamisch eingefügt -->
+                            </tbody>
+                        </table>
+                </div>
+        </div>
+            
+        <div>
+            <a href="#" class="toggle-link" onclick="toggleArticle4(event)">
+                <strong>ER-Modell</strong></a>
+                <div id="artikel4" class="artikel-versteckt">
+                    <img src="pics/dbanime_erm.jpg" alt="er modell für chanime.org" width="100%" height="100%">
+                </div>
+        </div>
+    </div>
+
+
+    <script>
+        function toggleArticle1(event) {
+            event.preventDefault(); // Verhindert das Springen der Seite
+            let artikel1 = document.getElementById("artikel1");
+            let link1 = document.querySelector(".toggle-link");
+
+            if (artikel1.classList.contains("artikel-versteckt")) {
+                artikel1.classList.remove("artikel-versteckt");
+                //link.textContent = "Weniger anzeigen";
+            } else {
+                artikel1.classList.add("artikel-versteckt");
+                //link.textContent = "Mehr erfahren";
+            }
+        }
+        function toggleArticle2(event) {
+            event.preventDefault(); // Verhindert das Springen der Seite
+            let artikel2 = document.getElementById("artikel2");
+            let link2 = document.querySelector(".toggle-link");
+
+            if (artikel2.classList.contains("artikel-versteckt")) {
+                artikel2.classList.remove("artikel-versteckt");
+                //link.textContent = "Weniger anzeigen";
+            } else {
+                artikel2.classList.add("artikel-versteckt");
+                //link.textContent = "Mehr erfahren";
+            }
+        }
+        function toggleArticle3(event) {
+            event.preventDefault(); // Verhindert das Springen der Seite
+            let artikel3 = document.getElementById("artikel3");
+            let link3 = document.querySelector(".toggle-link");
+
+            if (artikel3.classList.contains("artikel-versteckt")) {
+                artikel3.classList.remove("artikel-versteckt");
+                //link.textContent = "Weniger anzeigen";
+            } else {
+                artikel3.classList.add("artikel-versteckt");
+                //link.textContent = "Mehr erfahren";
+            }
+        }
+        function toggleArticle4(event) {
+            event.preventDefault(); // Verhindert das Springen der Seite
+            let artikel4 = document.getElementById("artikel4");
+            let link4 = document.querySelector(".toggle-link");
+
+            if (artikel4.classList.contains("artikel-versteckt")) {
+                artikel4.classList.remove("artikel-versteckt");
+                //link.textContent = "Weniger anzeigen";
+            } else {
+                artikel4.classList.add("artikel-versteckt");
+                //link.textContent = "Mehr erfahren";
+            }
+        }
+    </script>
+</body>
+</html>
