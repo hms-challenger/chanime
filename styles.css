@@ -1,181 +1,184 @@
+/* Allgemeine Styles */
 body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f4f4f9;
-    margin: 0;
-    box-sizing: border-box;
+    font-family: 'Cinzel', 'Noto Serif JP', serif;
+    font-size: 15px;
+    color: #17451b; 
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;    
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #D8E6D8; /* Zartes, warmes Grün */
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-h1 {
-    text-align: left;
-    color: #333;
-}
-
-pre {
-    font-family: "Courier New", monospace;
-    background-color: #eee;
-    font-size: 20px;
-    padding: 15px;
-    border-radius: 5px;
-    overflow-x: auto; /* Falls Code zu lang ist */
-}
-
-.buttons {
-    display: flex;
-    justify-content: left;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-button {
-    padding: 12px 25px;
-    font-size: 16px;
-    font-weight: 600;
-    background-color: #60aaf5;
-    color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-button:hover {
-    background-color: #8c9fb5;
-    transform: scale(1.05);
-}
-
-button:active {
-    background-color: #44a2ff;
-}
-
-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(209, 219, 232, 0.6);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    table-layout: fixed;
-}
-
-th, td {
-    border: 1px solid #ccc;
-    padding: 12px;
-    text-align: left;
-    word-wrap: break-word;
-}
-
-th {
-    background-color: #f2f2f2;
+/* Header */
+.header {
+    background-color: #fffff7; 
+    padding: 30px;
+    text-align: center;
+    font-size: 30px;
     font-weight: bold;
+    color: #0f310e; 
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
 }
 
-tr:hover {
-    background-color: #f9f9f9;
+.header-img {
+    width: 150px; /* Kleinere Breite der Bilder */
+    height: auto; /* Automatische Höhe, um das Seitenverhältnis beizubehalten */
+    border-radius: 5px; /* Runde Ecken für die Bilder */
+    border: none; /* Kein Rahmen um die Bilder */
 }
+
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.left-img {
+    margin-right: 20px; /* Abstand zwischen Bild und Titel auf der linken Seite */
+}
+
+.right-img {
+    margin-left: 20px; /* Abstand zwischen Bild und Titel auf der rechten Seite */
+}
+
+/* Optional: Wenn du ein Hover-Effekt für die Bilder möchtest */
+.header-img:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Navigation */
 .link {
-    display: flex; /* Use flexbox to align the items horizontally */
-    gap: 20px; /* Space between the links */
-    justify-content: left; /* Center the links horizontally */
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
 }
 
 .link a {
-    text-decoration: none; /* Remove the underline from links */
-    color: #007BFF; /* Set a blue color for the links */
+    color: #051409; /* Dunkelbraun für Text */
+    background-color: #A5C69C; /* Sanftes Grün für Buttons */
+    text-decoration: none;
+    padding: 12px 24px;
     font-size: 18px;
-    padding: 10px 20px;
-    background-color: #f0f0f0;
-    border: 2px solid #007BFF;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    border-radius: 25px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: bold;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .link a:hover {
-    background-color: #007BFF;
-    color: white;
-}
-.link-no-hover a {
-    text-decoration: none;
-    color: #007BFF;
-    font-size: 18px;
-    padding: 10px 20px;
-    background-color: #f0f0f0;
-    border: 2px solid #007BFF;
-    border-radius: 5px;
+    background-color: #6b9d74; /* Helles Grün für Hover */
+    transform: scale(1.05);
 }
 
-.link-no-hover a:hover {
-    background-color: transparent;
-    color: #007BFF;
-}
-.header {
-    background: linear-gradient(45deg, #ff6f61, #ff9c57); /* Gradient background */
-    padding: 30px 50px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a shadow to the header */
-    color: white;
-    border-bottom: 5px solid #ff9c57; /* Bottom border to match gradient color */
-    border-radius: 5px; /* Rounded corners */
-    margin-bottom: 20px; /* Space below the header */
-    transition: all 0.3s ease; /* Smooth transition */
-}
-
-.header h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin: 0;
-    padding: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Subtle shadow for text */
-}
-.header-small {
-    background-color: #007BFF;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* Optional: Add some global body padding for neatness */
-.content {
+/* Anime-Karten */
+.anime-card {
+    background: rgba(255, 255, 255, 0.85);
     padding: 20px;
+    border-radius: 12px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s;
+    border: 2px solid #A5C69C; /* Sanftes Grün */
+    margin: 15px;
 }
 
-.toggle-link {
-    display: inline-block;
-    margin: 10px 0;
-    font-size: 16px;
-    text-decoration: none;
-    color: #007BFF;
-    cursor: pointer;
+.anime-card:hover {
+    transform: scale(1.05);
+    box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.2);
 }
+
+/* Tabellen */
+table {
+    width: 100%;
+    max-width: 1000px; /* Maximale Breite der Tabelle */
+    margin: 20px auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #E9F4E9; /* Sehr zartes Grün */
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #A5C69C; /* Sanftes Grün für die Ränder */
+    padding: 15px;
+    text-align: left;
+    color: #12422a; /* Dunkelbraun für den Text */
+    font-size: 16px;
+}
+
+th {
+    background-color: #A5C69C; /* Sanftes Grün für die Kopfzeile */
+}
+
+/* Artikel-Toggle */
+.toggle-link {
+    display: block;
+    text-decoration: none;
+    color: #6e8c78; /* Natürliches Braun für Links */
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.toggle-link:hover {
+    color: #8bd296;
+    text-decoration: underline;
+}
+
+/* Versteckte Artikel */
 .artikel-versteckt {
     display: none;
 }
 
-#artikel1 {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    border-radius: 5px;
+.artikel-versteckt.show {
+    display: block;
 }
-#artikel2 {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    border-radius: 5px;
+
+/* ER-Modell */
+img {
+    max-width: 100%;
+    border-radius: 15px;
+    border: 4px solid #A5C69C; /* Sanftes Grün für den Rahmen */
 }
-#artikel3 {
-    margin-top: 20px;
+
+/* Schöne, runde Buttons */
+button {
+    background-color: #84A98C; /* Sanftes Grün für Buttons */
+    color: #0f3423; /* Dunkelbraun für den Text */
+    font-size: 18px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: bold;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #A1B88D; /* Dunkleres Grün für den Hover-Effekt */
+    transform: scale(1.05);
+}
+
+pre {
+    text-align: left;
+    white-space: pre-wrap;
+    font-family: monospace;
+    background-color: #F8F8F8;
     padding: 15px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
     border-radius: 5px;
+    border: 1px solid #ddd;
+    overflow-x: auto;
+    line-height: 1.5;
+    tab-size: 4;
+    width: 80%;  
+    margin: 20px auto; 
 }
